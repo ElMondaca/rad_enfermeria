@@ -16,7 +16,7 @@ $query_centro = "SELECT PRA.nombre_practica AS NPRA, SEM.nombre_semestre AS NSEM
 $q2 = $conexion->mysqli->query($query_centro);
 
 $query_cupos = "SELECT EST.rut_estudiante AS RUT, EST.nombre_estudiante AS NOMBRE, EST.app_estudiante AS APP, EST.apm_estudiante AS APM,
-                EHP.fecha_inicio AS INICIO, EHP.fecha_termino AS TERMINO, EHP.estado_reserva AS ESTADO
+                EHP.fecha_inicio AS INICIO, EHP.fecha_termino AS TERMINO, EHP.estado_reserva AS ESTADO, EHP.id_practica AS IDPRA
                 FROM estudiante AS EST, est_has_practica AS EHP
                 WHERE EST.rut_estudiante = EHP.det_estudiante
                 AND EHP.det_practica = $dato";
@@ -76,11 +76,11 @@ while($datos=$q->fetch_object()):
             <td><?=utf8_decode($datos->ESTADO)?></td>
 
     <?php if($datos->ESTADO == "Aceptado"){ ?>
-                <td> <a class="btn btn-primary" href="aceptado.php?id=<?=$datos->ICAM?>" role="button">Detalles de inscripción</a></td>
+                <td> <a class="btn btn-primary" href="aceptado.php?id=<?=$datos->IDPRA?>" role="button">Detalles de inscripción</a></td>
     <?php 
         }else{
     ?>
-            <td> <a class="btn btn-primary" href="en_espera.php?id=<?=$datos->ICAM?>" role="button">Revisar inscripción</a></td>
+            <td> <a class="btn btn-primary" href="en_espera.php?id=<?=$datos->IDPRA?>" role="button">Revisar inscripción</a></td>
     <?php } ?>
         </tr>
     <?php
