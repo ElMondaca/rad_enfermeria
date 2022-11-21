@@ -47,14 +47,11 @@ $(document).ready(function(){
     $("#enviar").click(function(){
     $.ajax({
         type: "POST",
-        url: "ajax/registro_vacunas.php",
-        data: "det_alumno=" + $("#det_alumno").val() +
-        '&id_vac=' + $("#id_vac").val() +
-        '&fecha_vac=' + $("#fecha_vac").val(),
+        url: "bd/estudiante_filtrado.php",
+        data: ,
         success: function(data) {
         if(data.success) {
-            $( "#vacunados" ).load( "ajax/vacunados.php?id=<?php echo $r_alumno;?>", function() {});
-            document.getElementById("vacunas").reset();
+            $("#vacunados").html(data);
         }
         else {
             console.log("error");
