@@ -12,7 +12,7 @@ require_once("bd/conexion.php");
     <div class="col-lg-12">
         <legend>Seleccionar Estudiante para simular situación</legend>
         <form method="post" id="vacunas">
-        <select class="form-control" name="id_vac" id="id_vac">
+        <select class="form-control" name="id_est" id="id_est">
             <option value="0">Estudiantes Habilitados</option>
             <?php
             if($q = $conexion->mysqli->query($q_listadoEstudiantes)) {
@@ -44,26 +44,20 @@ require_once("bd/conexion.php");
 <script src="js/bootstrap.js"></script>
 <script>
 $(document).ready(function(){
+
     $("#enviar").click(function(){
-    $.ajax({
-        type: "POST",
-        url: "bd/estudiante_filtrado.php",
-        data: ,
-        success: function(data) {
-        if(data.success) {
-            $("#vacunados").html(data);
-        }
-        else {
-            console.log("error");
-            console.log(data);
-        }
-        }, error: function(data){
-        console.log("error");
-        console.log(data);
-        }
-    });});
-
-
+        $.ajax({
+            type: "POST",
+            url: "bd/estudiante_filtrado.php",
+            data: "id_est=" + $("#id_est").val(),
+            success: function(data) {
+                $("#vacunados").html(data);
+            },
+            error: function(data){
+                console.log(data);
+            }
+        });
+    }); 
 });
 
 
