@@ -5,7 +5,7 @@ require_once("conexion.php");
 $conexion = new conexion();
 $conexion->conectar();
 
-$dato  = filter_input(INPUT_POST, 'busqueda', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+$dato  = filter_input(INPUT_POST, 'id_est', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 $id = $dato;
 
 ?>
