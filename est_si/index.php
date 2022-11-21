@@ -35,6 +35,7 @@ require_once("bd/conexion.php");
         </form>
         <br>
     </div>
+    <hr>
     <div class="col-lg-12" id="vacunados">
         <legend>DETALLE PRÁCTICA ESTUDIANTE</legend>
     </div>
