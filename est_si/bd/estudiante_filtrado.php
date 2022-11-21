@@ -27,7 +27,7 @@ $id = $dato;
             <td>Ver vacuna 1</td>
             <td>Ver vacuna 2</td>
             <td>Ver vacuna 3</td>
-            <td><a class="btn btn-info" href="inscritos.php?id=<?=$datos->ICAM?>" role="button">Prácticas inscritas</a></td>
+            <td><a class="btn btn-info" href="inscritos.php?id=<?=$id?>" role="button">Prácticas inscritas</a></td>
         </tr>
     </tbody>
     </table>
