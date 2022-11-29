@@ -14,31 +14,45 @@ WHERE sup_has_vacuna.det_vacuna = vacuna.id_vacuna AND sup_has_vacuna.det_superv
 AND sup_has_vacuna.det_supervisor = '$r_supervisor'
 ORDER BY sup_has_vacuna.fecha_dosis";
 
-echo "<legend>VACUNACIONES DE ESTUDIANTE</legend>";
+echo "<legend>Detalle de vacunas</legend>";
 echo "<div class='bs-component'>";
 echo "<div class='panel-body'>";
 if($q = $conexion->mysqli->query($query)) {
+?>
+
+<div class="col-lg-12">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Vacuna</th>
+                <th>Fecha de vacunacion</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+<?php
 while($datos=$q->fetch_object()):
 ?>
-    <p>Datos de vacuna: <?=$datos->VACCU." - Fecha vacunación: ".$datos->FECHAVACCU?><br>
-    <?php
-    if($datos->CARNET == 0){
-    ?>
-<a href='carnet_vacuna.php?id=<?php echo $datos->IDVAC;?>'>Cargar comprobante de vacuna</a></p>
-<br>
-<?php
-}else{
-?>
-<a href='ver_carnet.php?id=<?php echo $datos->CARNET;?>' target="_blank">Ver comprobante de vacuna</a></p>
-<br>
-<?php
-}
-endwhile;
-    echo "</div>";
-    echo "</div>";
-}
-else {
-    print_r(json_encode(array("error" => $conexion->mysqli->error)));
-    exit();
-}
-?>
+    <tr>
+        <td><?=$datos->VACCU?></td>
+        <td><?=$datos->FECHAVACCU?></td>
+        <?php
+        if($datos->CARNET == 0){
+        ?>
+        <td><a class="btn btn-info" href="registrar_carnet.php?id=<?=$datos->IDVAC?>" role="button">Agregar documento</a> </td>
+        <?php
+        }else{
+        ?>
+        <td><a class="btn btn-info" href="mostrar_carnet.php?id=<?=$datos->CARNET?>" role="button">Ver documento</a> </td>
+        <?php
+        }
+        endwhile;
+        }else {
+            print_r(json_encode(array("error" => $conexion->mysqli->error)));
+            exit();
+        }
+        ?>
+    </tr>
+</tbody>
+</table>
+</div>

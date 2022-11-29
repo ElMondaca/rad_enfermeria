@@ -24,15 +24,12 @@ exit();
         <p>Telefono: <?=$datos->fono_supervisor?></p>
     </div>
 </div>
-<div class="col-lg-8" id="vacunados">
-    <legend>Detalle de inmunizaciones</legend>
-</div>
-<div class="col-lg-12">
+<div class="col-lg-8">
     <legend>Registro de vacunas</legend>
     <form method="post" id="vacunas">
         <select class="form-control" name="id_vac" id="id_vac">
-        <option value="0">Vacunas administradas</option>
-        <?php
+            <option value="0">Vacunas administradas</option>
+            <?php
         $qequipo = "SELECT * FROM vacuna";
         if($equ = $conexion->mysqli->query($qequipo)){
             while($equipo = $equ->fetch_object()):
@@ -59,8 +56,11 @@ exit();
             <button type="button" class="btn btn-primary" id="enviar">Registrar</button>
         </div>
     </form>
-    </div>
-    
+</div>
+<div class="col-lg-12" id="vacunados">
+    <legend>Detalle de inmunizaciones</legend>
+</div>
+
 
 </div>
 </div>
