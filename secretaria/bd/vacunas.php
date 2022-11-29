@@ -39,11 +39,11 @@ while($datos=$q->fetch_object()):
         <?php
         if($datos->CARNET == 0){
         ?>
-        <td><a class="btn btn-info" href="registrar_carnet.php?id=<?=$datos->IDVAC?>" role="button">Agregar documento</a> </td>
+        <td><a class="btn btn-info" href="registrar_carnet.php?id=<?=$datos->IDVAC?>" role="button" target="_blank">Agregar documento</a> </td>
         <?php
         }else{
         ?>
-        <td><a class="btn btn-info" href="mostrar_carnet.php?id=<?=$datos->CARNET?>" role="button">Ver documento</a> </td>
+        <td><a class="btn btn-info" href="mostrar_carnet.php?id=<?=$datos->CARNET?>" role="button" target="_blank">Ver documento</a> </td>
         <?php
         }
         endwhile;
